@@ -1,0 +1,62 @@
+[
+  {
+    "name": "allow_quantity_match",
+    "conditions": [
+      {
+        "Quantity": 5,
+        "comparator": "int",
+        "operator": "equals"
+      }
+    ],
+    "action": "ResponseType:NEW_ORDER_CONFIRM",
+    "additional_fields": "ChildResponseType:NULL_RESPONSE_MIDDLE"
+  },
+  {
+    "name": "allow_symbol_match",
+    "conditions": [
+      {
+        "Symbol": "IFEU_BRN",
+        "comparator":  "str",
+        "operator": "equals"
+      }
+    ],
+    "action": "ResponseType:NEW_ORDER_CONFIRM",
+    "additional_fields": "ChildResponseType:NULL_RESPONSE_MIDDLE"
+  },
+  {
+    "name": "allow_symbol_match",
+    "conditions": [
+      {
+        "Symbol": "IFEU_BRN",
+        "comparator":  "str",
+        "operator": "equals"
+      },
+      {
+        "Price": 158.4,
+        "comparator":  "float",
+        "operator": "equals"
+      }
+    ],
+    "action": "ResponseType:TRADE_CONFIRM",
+    "additional_fields": "ChildResponseType:NULL_RESPONSE_MIDDLE"
+  },
+  {
+    "name": "deny_match",
+    "conditions": [
+      {
+        "Price": 160,
+        "comparator":  "float",
+        "operator": "greaterthan"
+      },
+      {
+        "Symbol": "IFEU_BRN",
+        "comparator":  "str",
+        "operator": "equals"
+      }
+    ],
+    "action": "ResponseType:REJECT",
+    "additional_fields": "ChildResponseType: CANCEL_ORDER_REJECT_MIDDLE"
+  }
+]
+
+
